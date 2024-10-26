@@ -1,0 +1,38 @@
+#Start(169297922)
+
+  Warning number 21
+  C:\wamp64\www\rescript-notepad\src\NotePad.res:40:3-36
+
+  38 ┆ a["href"] = url
+  39 ┆ a["download"] = "notlar.txt"
+  40 ┆ document["body"]["appendChild"](a)
+  41 ┆ a["click"]()
+  42 ┆ document["body"]["removeChild"](a)
+
+  this statement never returns (or has an unsound type.)
+
+
+  Warning number 21
+  C:\wamp64\www\rescript-notepad\src\NotePad.res:41:3-14
+
+  39 ┆ a["download"] = "notlar.txt"
+  40 ┆ document["body"]["appendChild"](a)
+  41 ┆ a["click"]()
+  42 ┆ document["body"]["removeChild"](a)
+  43 ┆ 
+
+  this statement never returns (or has an unsound type.)
+
+
+  Warning number 21
+  C:\wamp64\www\rescript-notepad\src\NotePad.res:42:3-36
+
+  40 ┆ document["body"]["appendChild"](a)
+  41 ┆ a["click"]()
+  42 ┆ document["body"]["removeChild"](a)
+  43 ┆ 
+  44 ┆ URLBinding.revokeObjectURL(url)
+
+  this statement never returns (or has an unsound type.)
+
+#Done(169299453)

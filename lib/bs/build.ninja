@@ -1,0 +1,20 @@
+rescript = 1
+g_finger := C:\wamp64\www\rescript-notepad\node_modules\@rescript\react\lib\ocaml\install.stamp
+rule astj
+  command = "C:\wamp64\www\rescript-notepad\node_modules\rescript\win32\bsc.exe"  -bs-v 11.1.4 -bs-jsx 4 -uncurried  -absname -bs-ast -o $out $i
+o src\App.ast : astj ..\..\src\App.res
+rule deps
+  command = "C:\wamp64\www\rescript-notepad\node_modules\rescript\win32\bsb_helper.exe" -hash 7b1a436a2b661c5004afb80613ab55bb $in
+  restat = 1
+o src\App.d : deps src\App.ast
+rule mij
+  command = "C:\wamp64\www\rescript-notepad\node_modules\rescript\win32\bsc.exe" -I src -I "C:\wamp64\www\rescript-notepad\node_modules\@rescript\react\lib\ocaml"   -uncurried -bs-package-name rescript-notepad -bs-package-output esmodule:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src\App.cmj src\App.cmi ..\..\src\App.bs.js : mij src\App.ast
+o src\Main.ast : astj ..\..\src\Main.res
+o src\Main.d : deps src\Main.ast
+o src\Main.cmj src\Main.cmi ..\..\src\Main.bs.js : mij src\Main.ast
+o src\NotePad.ast : astj ..\..\src\NotePad.res
+o src\NotePad.d : deps src\NotePad.ast
+o src\NotePad.cmj src\NotePad.cmi ..\..\src\NotePad.bs.js : mij src\NotePad.ast
